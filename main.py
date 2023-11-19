@@ -34,19 +34,20 @@ def read_root():
 
 @app.post("/calls/search")
 async def search_calls(data: SearchItem):
-
+    response = {}
     try:
         res = es_utils.search_from_es(data)
         response = {
-            "status": "success",
-            "message": "Data is valid",
-            "data": res
+            "total": res['hits']['total']['value'],
+            "page": data.page,
+            "page_size": data.page_size,
+            "results": [hit['_source'] for hit in res['hits']['hits']]
         }
     except Exception as e:
         print(e)
         response = {
             "status": "error",
-            "message": "Data was not valid"
+            "message": "Request was not valid"
         }
 
     return response
