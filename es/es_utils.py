@@ -4,6 +4,8 @@ from elasticsearch import Elasticsearch
 import os
 from dotenv import load_dotenv
 
+from models.search_models import SearchItem
+
 # Load .env file
 load_dotenv()
 
@@ -22,3 +24,33 @@ es = Elasticsearch(
 def save_to_es(data):
     es.index(index=INDEX_NAME, body=data)
 
+
+def search_from_es(data: SearchItem):
+    body = {
+        "from": 0,
+        "size": 10,
+        "query": {
+            "bool": {
+                "must": [
+                    {
+                        "match": {
+                            "transcript": data.search_query
+                        }
+                    }
+                ],
+                "filter": {
+                    "bool": {
+                        "must": [
+                            {
+                                "terms": {
+                                    "file_name.enum": data.file_names
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+        }
+    }
+    res = es.search(index=INDEX_NAME, body=body)
+    return res
