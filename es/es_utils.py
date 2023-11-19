@@ -27,6 +27,7 @@ def save_to_es(data):
 
 def search_from_es(data: SearchItem):
     body = {
+        "_source": [ "file_name" ],
         "from": 0,
         "size": 10,
         "query": {
