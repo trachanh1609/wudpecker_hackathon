@@ -26,10 +26,11 @@ def save_to_es(data):
 
 
 def search_from_es(data: SearchItem):
+    start_from = data.page * data.page_size
     body = {
         "_source": [ "file_name" ],
-        "from": 0,
-        "size": 10,
+        "from": start_from,
+        "size": data.page_size,
         "query": {
             "bool": {
                 "must": [
