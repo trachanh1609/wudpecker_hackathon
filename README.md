@@ -3,10 +3,12 @@
 ## 1. Elasticsearch
 You need Elasticsearch ready and an index created. Elasticsearch can be in local machine or in the cloud.
 The name of the index should match INDEX_NAME in .env file
+
+Follow /elasticsearch/README.md to install on Docker
 Here is the sample of the .env file and Elasticsearch is running on Localhost port 9200
 ```
 ES_USERNAME=elastic
-ES_PASSWORD=elasticpassword
+ES_PASSWORD=mylocalhost
 
 INDEX_NAME=search-calls
 ```
