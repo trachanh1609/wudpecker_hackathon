@@ -1,5 +1,18 @@
 # wudpecker_hackathon
 
+## 1. Elasticsearch
+You need Elasticsearch ready and an index created. Elasticsearch can be in local machine or in the cloud.
+The name of the index should match INDEX_NAME in .env file
+Here is the sample of the .env file
+```
+ES_USERNAME=elastic
+ES_PASSWORD=elasticpassword
+
+INDEX_NAME=search-calls
+```
+
+
+## 2. Python virtual venv and FastAPI
 Create venv
 ```
 # For WINDOWS
@@ -24,5 +37,3 @@ Install requirements
 \wudpecker_hackathon>pip install -U -r requirements.txt
 ```
 
-
-You need Elasticsearch ready and an index created 
