@@ -45,3 +45,28 @@ Run FastAPI server
 $uvicorn main:app --reload 
 ```
 
+## 3. Testing
+Send a POST request to localhost:8000/calls/search
+Body of the request
+```
+{
+    "page": 1,
+    "page_size": 5,
+    "search_query": "hello",
+    "file_names" : ["ADV700JU023", "ADV700JU047"]
+}
+```
+
+Sample response
+```
+{
+    "total": 1,
+    "page": 1,
+    "page_size": 5,
+    "results": [
+        {
+            "file_name": "ADV700JU023"
+        }
+    ]
+}
+```
