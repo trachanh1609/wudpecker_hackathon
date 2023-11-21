@@ -3,7 +3,7 @@
 ## 1. Elasticsearch
 You need Elasticsearch ready and an index created. Elasticsearch can be in local machine or in the cloud.
 The name of the index should match INDEX_NAME in .env file
-Here is the sample of the .env file
+Here is the sample of the .env file and Elasticsearch is running on Localhost port 9200
 ```
 ES_USERNAME=elastic
 ES_PASSWORD=elasticpassword
@@ -35,5 +35,11 @@ $source venv/bin/activate
 Install requirements
 ```
 \wudpecker_hackathon>pip install -U -r requirements.txt
+```
+
+
+Run FastAPI server
+```
+$uvicorn main:app --reload 
 ```
 
